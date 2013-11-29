@@ -9,11 +9,13 @@
     <script>
         var email = /[a-z_?\.?\d?]+@[\w]+\.[\w]+(\.[\w]+)?/;
         var mozUrl = /^https?:\/\/[\w+\.]+\/[\w-?]+\/[\w/]+/;
+        var tag = /^<[a-z]+>([\w ])+<\/[a-z]+>/;
 
         console.log(email.exec("me_and_the_universe58@yahoo.com.au"));
         console.log(email.exec("april.pimentel.coloma@gmail.com"));
         console.log(email.exec("admin@gmail.com"));
         console.log(mozUrl.exec("https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"));
+        console.log(tag.exec("<title>My title</title>"));
 
     </script>
 </body>
