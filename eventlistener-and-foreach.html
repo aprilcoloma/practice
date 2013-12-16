@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Background Changer</title>
+</head>
+<body>
+	
+
+
+	<script>
+		var d = document,
+			b = d.body,
+			header = d.createElement('header'),
+			left = d.createElement('left'),
+			right = d.createElement('right'),
+			footer = d.createElement('footer'),
+			elements = [];
+
+		elements = [header, left, right, footer];
+
+		elements.forEach(function (element)  {
+			element.style.width = "100%";
+			element.style.textAlign = "center";
+			element.style.display = "block";
+			element.style.margin = "0";
+			element.style.cursor = "pointer";
+			element.data         = {
+				colorIndex : 0
+			}
+		});
+
+		b.appendChild(header).appendChild(d.createTextNode('Header'));
+		b.appendChild(left).appendChild(d.createTextNode('Left'));
+		b.appendChild(right).appendChild(d.createTextNode('Right'));
+		b.appendChild(footer).appendChild(d.createTextNode('Footer'));
+
+		b.style.margin = "0 auto";
+
+		header.style.height = "100px";
+		header.data.colors = ["blue", "green", "red"];
+
+		left.style.width = "50%";
+		left.style.height = "100px";
+		left.style.cssFloat = "left";
+		left.data.colors = ["brown", "violet", "pink"];
+
+		right.style.width = "50%";
+		right.style.cssFloat = "left";
+		right.style.height = "100px";
+		right.data.colors = ["yellow", "green", "purple"];
+
+		footer.style.clear = "both";
+
+		var changeColors = function(evt) {
+			var data = evt.target.data;
+			evt.target.style.backgroundColor = data.colors[data.colorIndex];
+			if (data.colorIndex >= data.colors.length -1) {
+				data.colorIndex = 0;
+			} else {
+				data.colorIndex++;
+			}
+
+		};
+
+
+		header.addEventListener("click", changeColors, false);
+		left.addEventListener("click", changeColors, false);
+		right.addEventListener("click", changeColors, false);
+
+
+
+
+
+		
+
+		
+
+
+
+	</script>
+</body>
+</html>
