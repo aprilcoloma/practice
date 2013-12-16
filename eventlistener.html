@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample</title>
+</head>
+<body>
+	
+
+
+	<script>
+		var d = document,
+			b = d.body;
+
+
+		var elem = d.createElement('p')
+		b.appendChild(elem).appendChild(d.createTextNode('Hello'));
+		elem.id = "main-el";
+		elem.style.cursor = "pointer";
+
+		var themes = {
+			colors: [
+				mustard = {
+					background: "yellow"
+				},
+
+				winter = {
+					background: "blue"
+				},
+
+				autumn = {
+					background: "orange"
+				}
+			]
+		};
+
+		var counter = 0;
+		var myFunc = function(evt) {
+			
+			elem.style.backgroundColor = themes.colors[counter].background;
+
+			if ( counter < themes.colors.length - 1 ) {
+				counter++;
+			} else {
+				counter = 0;
+			}
+
+		};
+
+		elem.addEventListener("click", myFunc, false);
+
+
+
+	</script>
+</body>
+</html>
