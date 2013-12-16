@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Search</title>
+</head>
+<body>
+    <form id="filter-form" action="">
+        <input type="text" id="filter-input" class="filter-input" name="q" placeholder="filter search">
+    </form>
+
+
+    <ul id="keywords">
+        <li>Green</li>
+        <li>Gorilla</li>
+        <li>Monkey</li>
+        <li>Dog</li>
+        <li>Seaweeds</li>
+        <li>Castle</li>
+        <li>Ants</li>
+        <li>Apple</li>
+        <li>Corporate</li>
+        <li>Dust</li>
+        <li>Sand</li>
+        <li>Sour</li>
+    </ul>
+
+
+    <script>
+        var filterFormInput = document.getElementById('filter-form').children[0];
+
+        var myFunc = function() {
+            alert("hello");
+        }
+
+        filterFormInput.addEventListener( "keyup", myFunc, false );
+
+    </script>
+</body>
+</html>
