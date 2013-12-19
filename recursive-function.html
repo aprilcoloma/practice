@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recursive Function</title>
+</head>
+<body>
+
+    <script>
+        var obj = {
+            a: [
+                [
+                    [[[[[[[[['aw',
+                    [[[['april',
+                    'oink',
+                    [[[[[[[[[[[[[[[[[[[[21],2]]]]]]]]]]],10,22,334]]]]]]]]]]]]]],123]]]]]]]
+                ]
+            ]
+        };
+
+        var getItem = function (item, arr) {
+            var arrLength = arr.length;
+
+            for(var i = 0; i < arrLength; i++) {
+                if ( Array.isArray(arr[i]) ) {
+                    getItem( item, arr[i] );
+                }
+                
+                if ( item === arr[i] ) {
+                    console.log( item );
+                    break;
+                }
+            }
+        };
+
+        getItem( 21, obj.a );
+    </script>
+    
+</body>
+</html>
+
