@@ -11,17 +11,20 @@
         //Get the absolute value of a number
 
         var absolute = function(myNum) {
-            if ( myNum >= 0) {
-                return myNum;
-            
-            } else if (isNaN(myNum)) {
+    
+            if (isNaN(myNum)) {
                 return "You must enter a number.";
+            
+            } else if ( myNum >= 0)  {
+                return myNum;        
             } 
             else {
                 myNum = myNum * -1
                 return myNum;
             }
         };
+
+        absolute(20);
     </script>
 </body>
 </html>
