@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get the absolute value of a number</title>
+</head>
+<body>
+    
+
+    <script>
+        //Get the absolute value of a number
+
+        var absolute = function(myNum) {
+            if ( myNum >= 0) {
+                return myNum;
+            
+            } else if (isNaN(myNum)) {
+                return "You must enter a number.";
+            } 
+            else {
+                myNum = myNum * -1
+                return myNum;
+            }
+        };
+    </script>
+</body>
+</html>
