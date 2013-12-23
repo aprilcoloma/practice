@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extracting Date using Slice method and Date Object</title>
+</head>
+<body>
+    
+
+    <script>
+        var myParagraph = "died 27-04-2006: Black Leclère";
+        var extractDate = function(paragraph) {
+            function numberAt(start, length) {
+                return Number(paragraph.slice(start, start + length));
+            }
+            var myNewDate = new Date(numberAt(11, 4), numberAt(8,2)-1, numberAt(5,2));
+            return myNewDate;
+        }
+        console.log(extractDate(myParagraph));
+
+    </script>
+</body>
+</html>
