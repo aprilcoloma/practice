@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Call Method - call()</title>
+</head>
+<body>
+	
+	<script>
+		var o = { x: 1 };
+
+		var myfunc = function() {
+		  alert(this.x);
+		}
+
+		myfunc.call(o);
+	</script>
+</body>
+</html>
