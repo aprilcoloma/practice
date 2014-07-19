@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Setters and Getters in Javascript</title>
+</head>
+<body>
+  
+
+  <script>
+    var person = {
+        firstName: 'Jimmy',
+        lastName: 'Smith'
+    };
+
+
+    Object.defineProperty(person, 'fullName', {
+      get: function() {
+          return firstName + ' ' + lastName;
+      },
+      
+      set: function(name) {
+          var words = name.split(' ');
+          this.firstName = words[0] || '';
+          this.lastName = words[1] || '';
+      }
+    });
+
+  </script>
+</body>
+</html>
+
