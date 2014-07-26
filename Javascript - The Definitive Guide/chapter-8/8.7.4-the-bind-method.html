@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 8 - The bind() Method</title>
+</head>
+<body>
+	
+	<script>
+		function f(y) {
+			return this.x + y;
+		}
+
+		var o = { x: 1 }
+
+		var g = f.bind(o);
+
+		g(2);
+	</script>
+</body>
+</html>
