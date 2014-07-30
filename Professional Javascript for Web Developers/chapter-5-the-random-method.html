@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 5 - The random() Method</title>
+</head>
+<body>
+
+
+	<script>
+		function selectFrom(lowerValue, upperValue) {
+		    var choices = upperValue - lowerValue + 1;
+		    return Math.floor(Math.random() * choices + lowerValue);
+		}
+
+		var colors = ["red", "green", "blue", "yellow", "black", "purple", "brown"];
+		var color = colors[selectFrom(0, colors.length-1)];
+
+		console.log(color);
+	</script>
+</body>
+</html>
