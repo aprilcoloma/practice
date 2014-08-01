@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example 13.2 - A Simple JavaScript digital clock</title>
+
+	<script>
+		//Define a function to display the current time
+		function displayTime() {
+			var elt = document.getElementById("clock"); // Find element with id="clock"
+			var now = new Date(); // get current time
+			elt.innerHTML = now.toLocaleTimeString(); // Make elt display it
+			setTimeout(displayTime, 1000); // Run again in 1 second
+		}
+
+		window.onload = displayTime;	// Start displaying the time when document loads
+	</script>
+
+	<style>
+		#clock {
+			font: bold 24pt sans;
+			background: #ddf;
+			padding: 10px;
+			border: 2px solid black;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Digital Clock</h1>	
+	<span id="clock"></span> <!-- The time gets inserted here -->
+</body>
+</html>

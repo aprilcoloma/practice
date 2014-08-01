@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Client-side Javascript</title>
+</head>
+<body>
+
+	<div id="timestamp"></div>
+	
+	<script>
+		var timestamp = document.getElementById("timestamp");
+
+		if (timestamp.firstChild == null) {
+			timestamp.appendChild(document.createTextNode(new Date().toString()));
+			timestamp.style.cursor = "pointer";
+			
+			timestamp.onclick = function() {	
+				this.innerHTML = new Date().toString();
+			};
+		}
+	</script>
+</body>
+</html>
