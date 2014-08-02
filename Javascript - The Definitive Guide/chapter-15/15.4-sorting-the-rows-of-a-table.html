@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example 15-4. Sorting the rows of a table</title>
+</head>
+<body>
+
+	<table>
+		<caption>Table Sorting</caption>
+		<thead>
+			<tr>
+				<th>Header 1</th>
+				<th>Header 2</th>
+				<th>Header 3</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>level 1</td>
+				<td>level 2</td>
+				<td>level 3</td>
+			</tr>
+			<tr>
+				<td>level 1</td>
+				<td>level 2</td>
+				<td>level 3</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script>
+		// Sort the rows in first <tbody> of the specified table according to
+		// the value of nth cell within each row. Use the comparator function
+		// if one is specified. Otherwise, compare the values alphabetically.
+
+		function sortrows(table, n, comparator) {
+			var tbody = table.tBodies[0], // First <tbody>; may be implicitly created
+				rows = tbody.getElementsByTagName("tr"); // All rows in the body
+				rows = Array.prototype.slice.call(rows, 0); // Snapshot in a true array
+
+			// Now sort the rows based on the text in the nth <td> element 
+			rows.sort(function(row1,row2) {
+				var cell1 = row1.getElementsByTagName("td")[n]; 
+				var cell2 = row2.getElementsByTagName("td")[n]; 
+				var val1 = cell1.textContent || cell1.innerText; 
+				var val2 = cell2.textContent || cell2.innerText; 
+
+				console.log(val1);
+
+				if (comparator) return comparator(val1, val2); 
+				if (val1 < val2) return -1;
+				else if (val1 > val2) return 1;
+				else return 0; 
+			});
+
+			// Now append the rows into the tbody in their sorted order.
+			// This automatically moves them from their current location, so there
+			// is no need to remove them first. If the ,<tbody> contains any
+			// nodes other than <tr> elements, those nodes will float to the top.
+			for (var i = 0; i < rows.length; i++) {
+				tbody.appendChild(rows[i]);
+			}
+		}
+
+		// Find the <th> elements of the table (assuming there is only one row of them)
+		// and make them clickable so that clicking on a column header sorts by that column.
+
+		var mytable = document.getElementsByTagName("table")[0];
+
+		function makeSortable(table) {
+			var headers = table.getElementsByTagName("th");
+			for (var i = 0; i < headers.length; i++) {
+				(function(n) { // Nested function to create a local scope
+					headers[i].onclick = function() {
+						sortrows(table, n); // Assign a value of i to the local variable n
+					};
+				})(i);
+			}
+		}
+
+		makeSortable(mytable);
+	</script>
+</body>
+</html>
