@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 7 - Memory Leaks 2</title>
+</head>
+<body>
+
+	<div id="someElement">
+		<p>Hello World!</p>
+	</div>
+	
+	<script>
+		function assignHandler() {
+		    var element = document.getElementById("someElement"),
+		    	id = element.id;
+
+		    element.onclick = function() {
+		      alert(id);
+		    };
+
+		    element = null;
+		}
+
+		assignHandler();
+	</script>
+</body>
+</html>
