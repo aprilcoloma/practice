@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15.1 - Looking up multiple elements by ID</title>
+</head>
+<body>
+	
+	<script>
+		/**
+		 * This function expects any number of string arguments. It treats each
+		 * arguments as an element id, and calls document.getElementById() for each.
+		 * Returns an object that maps ids to the corresponding Element object.
+		 * Throws an Error object if any of the ids is undefined.
+		*/
+
+		function getElements( /*ids...*/) {
+			var elements = {};										// Start with an empty map
+			for (var i = 0; i < arguments.length; i++) {			// For each argument
+				var id = arguments[i],								// Argument is an element id
+					elt = document.getElementById(id);				// Look up the Element
+				if (elt == null)									// If not defined,
+					throw new Error("No element with id: " + id);	// Throw an Error
+				elements[id] = elt;									// Map id to element
+			}
+			return elements;
+		}
+	</script>
+</body>
+</html>
