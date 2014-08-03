@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15.10.3 Querying Selected Text</title>
+</head>
+<body>
+		
+		<a href="javascript: var q;
+			if (window.getSelection) q = window.getSelection().toString();
+			else if (document.selection) q = document.selection.createRange().text;
+			void window.open('http://en.wikipedia.org/wiki/' + q);">
+			Look up selected text in wikipedia
+		</a>
+	
+	<script>
+		
+	</script>
+</body>
+</html>
