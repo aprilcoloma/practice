@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shake The Button</title>
+</head>
+<body>
+		
+	<button id="mybtn">Shake The Button</button>
+
+
+	
+	<script>
+		var btn = document.getElementById("mybtn");
+		btn.addEventListener("click", shake, false);
+
+		function shake() {
+			var el = this;
+			el.style.position = "relative";
+
+			var time = 500,
+				distance = 5;
+
+			var start = new Date().getTime();
+			console.log(start);
+
+			animate();
+
+			function animate() {
+				var now = new Date().getTime();
+				var elapsed = now-start;
+				var fraction = elapsed/time;
+
+				if (fraction < 1) {
+					var x = distance * Math.sin(fraction*4*Math.PI);
+					el.style.left = x + "px";
+					console.log(el.style.left);
+
+					setTimeout(animate, Math.min(25, time-elapsed));
+				} else {
+					console.log("animation is complete");
+				}
+			}
+		}
+	</script>
+</body>
+</html>
