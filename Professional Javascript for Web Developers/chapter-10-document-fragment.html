@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 10 - Document Fragment</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<ul id="myList">
+		
+	</ul>
+
+	<script>
+	
+		var fragment = document.createDocumentFragment(),
+			ul = document.getElementById("myList"),
+			li = null;
+
+		for (var i = 0; i < 3; i++) {
+			li = document.createElement("li");
+			li.appendChild(document.createTextNode("Item " + (i+1)));
+			fragment.appendChild(li);
+		}
+
+		ul.appendChild(fragment);
+	</script>
+</body>
+</html>
