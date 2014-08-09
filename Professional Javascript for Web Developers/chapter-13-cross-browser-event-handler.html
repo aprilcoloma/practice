@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 13 - Cross-browser Event Handler</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+
+	<button id="mybtn">Click me please!</button>
+
+		
+	<script>
+
+		var btn = document.getElementById("mybtn");
+		var handler = function() {
+			alert(this.id);
+		};
+
+
+		var EventUtil = {
+
+			addHandler: function(element, type, handler) {
+				if (element.addEventListener) {
+					element.addEventListener(type, handler, false);
+				} else if ( element.attachEvent  ) {
+					element.attachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = handler;
+				}
+			},
+
+			removeHandler: function(element, type, handler) {
+				if (element.removeEventListener) {
+					element.removeEventListener(type, handler, false);
+				} else if (element.detachEvent) {
+					element.detachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = null;
+				}
+			}
+		};
+
+		EventUtil.addHandler(btn, "click", handler);
+
+		// EventUtil.removeHandler(btn, "click", handler);
+
+	</script>
+</body>
+</html>
