@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 10 - Touch Event Example</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+
+		
+	<script>
+
+	var EventUtil = {
+
+		addHandler: function(element, type, handler) {
+			if (element.addEventListener) {
+				element.addEventListener(type, handler, false);
+			} else if ( element.attachEvent  ) {
+				element.attachEvent("on" + type, handler);
+			} else {
+				element["on" + type] = handler;
+			}
+		},
+
+		removeHandler: function(element, type, handler) {
+			if (element.removeEventListener) {
+				element.removeEventListener(type, handler, false);
+			} else if (element.detachEvent) {
+				element.detachEvent("on" + type, handler);
+			} else {
+				element["on" + type] = null;
+			}
+		},
+
+		getEvent: function(event){
+        	return event ? event : window.event;
+		},
+
+		getTarget: function(event){
+		    return event.target || event.srcElement;
+		},
+
+		getWheelDelta: function(event) {
+			if (event.getWheelDelta) {
+				return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta: event.wheelDelta);
+			} else {
+				return -event.detail * 40;
+			}
+		},
+
+		preventDefault: function(event) {
+			event.preventDefault;
+		}
+	};
+
+	function handleTouchEvent(event) {
+
+		//only for one touch
+		if (event.touches.length == 1) {
+			var output = document.getElementById("output");
+
+			switch(event.type) {
+				case "touchstart":
+					output.innerHTML = "Touch started (" + event.touches[0].clientX + 
+										"," + event.touches[0].clientY + ")";
+
+					break;
+				case "touchend":
+					output.innerHTML = "<br> Touch ended ("+
+										event.changedTouches[0].clientX + "," +
+										event.changedTouches[0].clientY + ")";
+					break;
+				case "touchmove":
+					event.preventDefault();	//prevent scrolling
+					output.innerHTML += "<br>Touch moved ("+
+										event.changedTouches[0].clientX + ","+
+										event.changedTouches[0].clientY + ")";
+					break;
+
+			}
+		}
+	}
+
+	EventUtil.addHandler(document, "touchstart", handleTouchEvent);
+	EventUtil.addHandler(document, "touchend", handleTouchEvent);
+	EventUtil.addHandler(document, "touchmove", handleTouchEvent);
+
+	
+	
+	
+
+	</script>
+</body>
+</html>
