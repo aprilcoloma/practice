@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 13- Event Delegation - Removing Event Handlers</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+
+
+	<div id="myDiv">
+		<input type="button" value="Click Me" id="myBtn">
+	</div>
+
+		
+	<script>
+
+	var EventUtil = {
+
+		addHandler: function(element, type, handler) {
+			if (element.addEventListener) {
+				element.addEventListener(type, handler, false);
+			} else if ( element.attachEvent  ) {
+				element.attachEvent("on" + type, handler);
+			} else {
+				element["on" + type] = handler;
+			}
+		},
+
+		removeHandler: function(element, type, handler) {
+			if (element.removeEventListener) {
+				element.removeEventListener(type, handler, false);
+			} else if (element.detachEvent) {
+				element.detachEvent("on" + type, handler);
+			} else {
+				element["on" + type] = null;
+			}
+		},
+
+		getEvent: function(event){
+        	return event ? event : window.event;
+		},
+
+		getTarget: function(event){
+		    return event.target || event.srcElement;
+		},
+
+		getWheelDelta: function(event) {
+			if (event.getWheelDelta) {
+				return (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta: event.wheelDelta);
+			} else {
+				return -event.detail * 40;
+			}
+		},
+
+		preventDefault: function(event) {
+			event.preventDefault;
+		}
+	};
+
+	var btn = document.getElementById("myBtn");
+	btn.onclick = function() {
+		btn.onclick = null;
+		document.getElementById("myDiv").innerHTML = "Processing...";
+	}
+
+
+	</script>
+</body>
+</html>
